@@ -27,7 +27,7 @@ function TabIconLabel({ name, label, focused }) {
           marginTop: 4,
           color: focused ? colors.primary : "#666",
           fontWeight: focused ? "700" : "600",
-          textAlign: "center",      // center the label
+          textAlign: "center",
         }}
       >
         {label}

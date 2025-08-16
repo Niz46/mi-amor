@@ -361,6 +361,8 @@ const styles = StyleSheet.create({
     paddingVertical: 28,
     paddingHorizontal: 20,
     alignItems: "center",
+    borderRadius: 12,
+    overflow: "hidden",
   },
   howHeading: {
     color: "#fff",

@@ -76,6 +76,8 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
     paddingHorizontal: 12,
     marginTop: 24,
+    borderRadius: 16,
+    overflow: "hidden",
   },
 
   heading: {
