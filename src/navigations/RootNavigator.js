@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import BottomTabs from "./BottomTabs";
 import RegisterScreen from "../screens/RegisterScreen";
 import PaymentScreen from "../screens/PaymentScreen";
+import PrivacyPolicy from "../screens/PrivacyPolicy";
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,7 @@ export default function RootNavigator() {
         options={{ presentation: "modal" }}
       />
       <Stack.Screen name="Payment" component={PaymentScreen} />
+      <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
     </Stack.Navigator>
   );
 }

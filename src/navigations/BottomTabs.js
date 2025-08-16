@@ -64,7 +64,7 @@ export default function BottomTabs() {
           alignItems: "center",
           justifyContent: "center",
           marginTop: 8,
-          paddingHorizontal: 2, // small horizontal padding per item
+          paddingHorizontal: 2,
         },
       }}
     >
