@@ -1,5 +1,4 @@
 // src/screens/HomeScreen.js
-import React from "react";
 import {
   SafeAreaView,
   View,
@@ -21,6 +20,7 @@ import CountdownTimer from "../components/CountdownTimer";
 import AnimatedFeatureCard from "../components/AnimatedFeatureCard";
 import FAQSection from "../components/FAQSection";
 import HeroVideo from "../components/HeroVideo";
+import TopSafeShade from "../components/TopSafeShade";
 
 const { width } = Dimensions.get("window");
 
@@ -103,6 +103,7 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
+      <TopSafeShade color="rgba(0,0,0,0.95)" />
       <Animated.ScrollView
         contentContainerStyle={{ paddingBottom: 120 }}
         scrollEventThrottle={16}
