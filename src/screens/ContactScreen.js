@@ -8,7 +8,11 @@ import {
   StyleSheet,
   Alert,
   TouchableOpacity,
+  Linking,
+  Platform,
 } from "react-native";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
+import { colors } from "../themes/theme";
 
 export default function ContactScreen() {
   const [msg, setMsg] = useState("");
@@ -26,6 +30,35 @@ export default function ContactScreen() {
     setMsg("");
     setEmail("");
     setName("");
+  };
+
+  const openMail = async (to) => {
+    const url = `mailto:${to}`;
+    try {
+      const can = await Linking.canOpenURL(url);
+      if (can) {
+        Linking.openURL(url);
+      } else {
+        Alert.alert("Cannot open mail app");
+      }
+    } catch (e) {
+      console.warn("openMail error", e);
+      Alert.alert("Error", "Could not open mail app.");
+    }
+  };
+
+  const openUrl = async (url) => {
+    try {
+      const can = await Linking.canOpenURL(url);
+      if (can) {
+        Linking.openURL(url);
+      } else {
+        Alert.alert("Cannot open link");
+      }
+    } catch (e) {
+      console.warn("openUrl error", e);
+      Alert.alert("Error", "Could not open link.");
+    }
   };
 
   return (
@@ -59,12 +92,77 @@ export default function ContactScreen() {
           <Text style={styles.sendBtnText}>Send Message</Text>
         </TouchableOpacity>
       </View>
+
+      <View style={styles.card}>
+        <Text style={styles.title}>Email</Text>
+
+        <View style={styles.emailBlock}>
+          <Text
+            style={styles.emailLink}
+            onPress={() => openMail("support@miamorplatform.com")}
+            accessibilityRole="link"
+          >
+            support@miamorplatform.com
+          </Text>
+          <Text
+            style={styles.emailLink}
+            onPress={() => openMail("info@miamorplatform.com")}
+            accessibilityRole="link"
+          >
+            info@miamorplatform.com
+          </Text>
+        </View>
+
+        <Text style={[styles.title, { marginTop: 12 }]}>Follow us</Text>
+
+        <View style={styles.socialRow}>
+          <TouchableOpacity
+            onPress={() => openUrl("https://x.com/miamorplatform?s=21")}
+            accessibilityLabel="Twitter"
+            style={styles.iconBtn}
+          >
+            <FontAwesome
+              name="twitter"
+              size={22}
+              color={colors.primary || "#0057e1"}
+            />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => openUrl("https://facebook.com/")}
+            accessibilityLabel="Facebook"
+            style={styles.iconBtn}
+          >
+            <FontAwesome
+              name="facebook"
+              size={22}
+              color={colors.primary || "#0057e1"}
+            />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => openUrl("https://t.me/+Icd7vhHJhKxkZDA0")}
+            accessibilityLabel="Telegram"
+            style={styles.iconBtn}
+          >
+            <FontAwesome
+              name="telegram"
+              size={22}
+              color={colors.primary || "#0057e1"}
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#f6f8ff", paddingTop: 20 },
+  container: {
+    flex: 1,
+    backgroundColor: "#f6f8ff",
+    paddingTop: Platform.OS === "android" ? 20 : 0,
+  },
   card: { margin: 20, backgroundColor: "#fff", padding: 16, borderRadius: 12 },
   title: { fontSize: 20, fontWeight: "800", marginBottom: 12 },
   input: {
@@ -83,4 +181,22 @@ const styles = StyleSheet.create({
     marginTop: 6,
   },
   sendBtnText: { color: "#fff", fontWeight: "800" },
+  emailBlock: {
+    flexDirection: "column",
+    gap: 8,
+  },
+  emailLink: {
+    color: colors.primary || "#0057e1",
+    textDecorationLine: "underline",
+    marginBottom: 6,
+  },
+  socialRow: {
+    flexDirection: "row",
+    gap: 16,
+    marginTop: 6,
+    alignItems: "center",
+  },
+  iconBtn: {
+    padding: 6,
+  },
 });

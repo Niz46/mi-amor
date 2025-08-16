@@ -4,20 +4,30 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../screens/HomeScreen";
 import ContactScreen from "../screens/ContactScreen";
 import Icon from "react-native-vector-icons/Feather";
-import { colors } from "../themes/theme"
+import { colors } from "../themes/theme";
 
 const Tab = createBottomTabNavigator();
 
 function TabIconLabel({ name, label, focused }) {
   return (
-    <View style={{ alignItems: "center", justifyContent: "center" }}>
+    <View
+      style={{
+        alignItems: "center",
+        justifyContent: "center",
+        minWidth: 64,
+        flexShrink: 0,
+      }}
+    >
       <Icon name={name} size={20} color={focused ? colors.primary : "#666"} />
       <Text
+        numberOfLines={1}
+        ellipsizeMode="tail"
         style={{
           fontSize: 11,
           marginTop: 4,
           color: focused ? colors.primary : "#666",
           fontWeight: focused ? "700" : "600",
+          textAlign: "center",      // center the label
         }}
       >
         {label}
@@ -54,6 +64,7 @@ export default function BottomTabs() {
           alignItems: "center",
           justifyContent: "center",
           marginTop: 8,
+          paddingHorizontal: 2, // small horizontal padding per item
         },
       }}
     >
