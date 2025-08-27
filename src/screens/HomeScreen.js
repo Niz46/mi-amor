@@ -29,8 +29,10 @@ const sliderImages = [
   require("../../assets/images/slider1.jpeg"),
   require("../../assets/images/slider2.jpeg"),
   require("../../assets/images/slider3.jpeg"),
+  require("../../assets/images/slider6.jpg"),
   require("../../assets/images/slider4.jpeg"),
   require("../../assets/images/slider5.jpeg"),
+  
 ];
 
 /* FEATURES (icons use FontAwesome names from AnimatedFeatureCard) */

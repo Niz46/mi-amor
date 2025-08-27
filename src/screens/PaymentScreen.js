@@ -19,9 +19,9 @@ import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 
 export default function PaymentScreen() {
   const account = {
-    name: "NWOBODO THANKGOD IFEANYI",
-    number: "6231176238",
-    bank: "MONIEPOINT",
+    name: "JTI BRAND",
+    number: "6105525479",
+    bank: "OPAY",
     packageLabel: "ULTRA PACKAGE",
     price: "₦14,000",
   };
